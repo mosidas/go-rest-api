@@ -3,9 +3,11 @@ package main
 import (
 	"net/http"
 
+	"restapi/controller/authController"
+	"restapi/controller/usersController"
+
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	"restapi/controller"
 )
 
 func main() {
@@ -17,14 +19,14 @@ func main() {
 	e.GET("/", ping)
 	e.GET("/index", index)
 	// Users
-	e.GET("/users/:id", controller.GetById)
-	e.GET("/users", controller.GetByQuery)
-	e.PUT("/users", controller.Save)
-	e.POST("/users", controller.Save2)
+	e.GET("/users/:id", usersController.GetById)
+	e.GET("/users", usersController.GetByQuery)
+	e.PUT("/users", usersController.Save)
+	e.POST("/users", usersController.Save2)
 
 	// Authentication
-	e.GET("/auth", controller.SignIn)
-	e.POST("auth", controller.SignUp)
+	e.GET("/auth", authController.SignIn)
+	e.POST("auth", authController.SignUp)
 
 	e.Logger.Fatal(e.Start("localhost:1323"))
 }

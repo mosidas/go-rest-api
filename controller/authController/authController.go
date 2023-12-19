@@ -1,10 +1,11 @@
-package controller
+package authController
 
 import (
-	"github.com/labstack/echo/v4"
 	"net/http"
 	"restapi/model"
 	"restapi/repository"
+
+	"github.com/labstack/echo/v4"
 )
 
 func SignIn(c echo.Context) error {
@@ -18,7 +19,7 @@ func SignIn(c echo.Context) error {
 		return err
 	}
 	// check if password is correct
-	if user.Auth.Password != u.Password {
+	if user.Password != u.Password {
 		return c.String(http.StatusUnauthorized, "Wrong password or username.")
 	}
 	return c.JSON(http.StatusOK, user)

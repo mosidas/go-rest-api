@@ -1,9 +1,10 @@
-package controller
+package usersController
 
 import (
-	"github.com/labstack/echo/v4"
 	"net/http"
 	"restapi/model"
+
+	"github.com/labstack/echo/v4"
 )
 
 func GetById(c echo.Context) error {
