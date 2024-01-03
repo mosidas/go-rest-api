@@ -25,7 +25,7 @@ func SignIn(c echo.Context) error {
 		return err
 	}
 	// check if password is correct
-	if user.Auth.Password != u.Password {
+	if user.Credential.Password != u.Password {
 		return c.String(http.StatusUnauthorized, "Wrong password or username.")
 	}
 

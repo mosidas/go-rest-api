@@ -16,7 +16,7 @@ func NewUserRepository() IUserRepository {
 
 func (ur userRepository) GetById(id string) (*model.User, error) {
 	user := &model.User{
-		Auth: model.Credential{
+		Credential: model.Credential{
 			Id:       id,
 			Password: "password" + id,
 		},
